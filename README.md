@@ -16,19 +16,19 @@ What are groups?
 Join a process to a group (no need to pre-declare)
 
 ```erlang
-join(group(), pid()) -> ok.
+lasp_pg:join(group(), pid()) -> ok.
 ```
 
 What about removing?
 
 ```erlang
-leave(group(), pid()) -> ok.
+lasp_pg:leave(group(), pid()) -> ok.
 ```
 
 You can also return the members.
 
 ```erlang
-members(group()) -> {ok, sets:set(pid())}.
+lasp_pg:members(group()) -> {ok, sets:set(pid())}.
 ```
 
 ## Clustering
