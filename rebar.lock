@@ -25,7 +25,7 @@
   0},
  {<<"lasp">>,
   {git,"https://github.com/lasp-lang/lasp",
-       {ref,"0058a56e5d041a34679bbe8370e038526ba96ae0"}},
+       {ref,"884bd40cba014ff659d5e4baddc654fdc773fc84"}},
   0},
  {<<"lasp_support">>,
   {git,"https://github.com/lasp-lang/lasp_support.git",
