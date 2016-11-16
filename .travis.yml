@@ -2,8 +2,8 @@ language: erlang
 otp_release:
   - 18.1
 install:
-  - make
   - ./rebar3 update
+  - make
 before_script:
   - epmd -daemon
 script:
