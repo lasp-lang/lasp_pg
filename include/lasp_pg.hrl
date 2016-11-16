@@ -1,1 +1,1 @@
--define(SET, lasp_awset).
+-define(SET, awset).
