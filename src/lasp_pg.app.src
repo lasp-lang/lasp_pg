@@ -1,0 +1,20 @@
+{application, lasp_pg,
+ [
+  {description, "Process groups for Lasp"},
+  {vsn, "0.0.1"},
+  {registered, []},
+  {included_applications,[ranch]},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  crypto,
+                  lager,
+                  types,
+                  lasp,
+                  mochiweb,
+                  time_compat,
+                  rand_compat
+                 ]},
+  {mod, {lasp_pg_app, []}},
+  {modules, []}
+ ]}.
