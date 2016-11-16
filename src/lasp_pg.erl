@@ -45,12 +45,12 @@ members(Group) ->
 %% @doc Add a member to the process group.
 leave(Group, Pid) ->
     GroupName = term_to_binary(Group),
-    lasp:update({GroupName, ?SET}, {leave, Pid}, actor()).
+    lasp:update({GroupName, ?SET}, {rmv, Pid}, actor()).
 
 %% @doc Add a member to the process group.
 join(Group, Pid) ->
     GroupName = term_to_binary(Group),
-    lasp:update({GroupName, ?SET}, {rmv, Pid}, actor()).
+    lasp:update({GroupName, ?SET}, {add, Pid}, actor()).
 
 %% @private
 actor() ->
