@@ -18,7 +18,7 @@
 %%
 %% -------------------------------------------------------------------
 
--module(lasp_pg).
+-module(lasp_pg_sup).
 
 -behaviour(supervisor).
 
