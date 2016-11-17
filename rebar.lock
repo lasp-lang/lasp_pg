@@ -1,3 +1,4 @@
+{"1.1.0",
 [{<<"eini">>,{pkg,<<"eini">>,<<"1.2.1">>},2},
  {<<"erlcloud">>,
   {git,"https://github.com/erlcloud/erlcloud.git",
@@ -71,4 +72,9 @@
  {<<"webmachine">>,
   {git,"https://github.com/webmachine/webmachine.git",
        {ref,"b4758b51c05e8f4e8898a70b7a14514a8c150ffa"}},
-  1}].
+  1}]}.
+[
+{pkg_hash,[
+ {<<"eini">>, <<"97C8CB2F54172E671A419FDC8BC3C3CD62D7E8B0993B6482E81CCCA9E83604B1">>},
+ {<<"lhttpc">>, <<"61760AFEC1DDB98E47972BE93B13FBFF487A63D65B91A02C41122A0ADF83DA38">>}]}
+].
