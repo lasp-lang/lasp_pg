@@ -25,6 +25,7 @@
 
 -export([members/1,
          join/2,
+         join/3,
          leave/2]).
 
 -include("lasp_pg.hrl").
@@ -52,6 +53,15 @@ leave(Group, Pid) ->
 join(Group, Pid) ->
     GroupName = term_to_binary(Group),
     {ok, {_, _, _, Value}} = lasp:update({GroupName, ?SET}, {add, Pid}, actor()),
+    {ok, Value}.
+
+%% @doc Add a member to the process group and maybe monitor it.
+-spec join(Group :: term(), Pid :: pid(), Monitor :: boolean()) -> {ok, term()}.
+join(Group, Pid, false) ->
+    join(Group, Pid);
+join(Group, Pid, true) ->
+    {ok, Value} = join(Group, Pid),
+    lasp_pg_monitor:monitor_me(Group, Pid),
     {ok, Value}.
 
 %% @private
