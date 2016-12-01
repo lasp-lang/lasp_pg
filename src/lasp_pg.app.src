@@ -13,5 +13,6 @@
                   time_compat,
                   rand_compat
                  ]},
+  {mod, {lasp_pg_app, []}},
   {modules, []}
  ]}.
