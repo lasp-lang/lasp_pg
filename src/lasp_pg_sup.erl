@@ -45,10 +45,9 @@ init([]) ->
                  permanent, infinity, supervisor, [partisan_sup]},
 
     Lasp = {lasp_sup,
-                {lasp_sup, start_link, []},
-                 permanent, infinity, supervisor, [lasp_sup]},
+            {lasp_sup, start_link, []},
+             permanent, infinity, supervisor, [lasp_sup]},
 
-    Children = [?CHILD(lasp_pg_monitor, worker), Partisan, Lasp],
-
+    Children = [Partisan, Lasp, ?CHILD(lasp_pg_monitor, worker)],
     RestartStrategy = {one_for_one, 10, 10},
     {ok, {RestartStrategy, Children}}.
