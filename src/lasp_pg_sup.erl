@@ -40,14 +40,10 @@ init([]) ->
     partisan_config:set(partisan_peer_service_manager,
                         partisan_default_peer_service_manager),
 
-    Partisan = {partisan_sup,
-                {partisan_sup, start_link, []},
-                 permanent, infinity, supervisor, [partisan_sup]},
-
     Lasp = {lasp_sup,
             {lasp_sup, start_link, []},
              permanent, infinity, supervisor, [lasp_sup]},
 
-    Children = [Partisan, Lasp, ?CHILD(lasp_pg_monitor, worker)],
+    Children = [Lasp, ?CHILD(lasp_pg_monitor, worker)],
     RestartStrategy = {one_for_one, 10, 10},
     {ok, {RestartStrategy, Children}}.
