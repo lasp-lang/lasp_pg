@@ -36,14 +36,6 @@ start_link() ->
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 init([]) ->
-    %% Manually configure the peer service to use full mesh.
-    partisan_config:set(partisan_peer_service_manager,
-                        partisan_default_peer_service_manager),
-
-    Lasp = {lasp_sup,
-            {lasp_sup, start_link, []},
-             permanent, infinity, supervisor, [lasp_sup]},
-
-    Children = [Lasp, ?CHILD(lasp_pg_monitor, worker)],
+    Children = [?CHILD(lasp_pg_monitor, worker)],
     RestartStrategy = {one_for_one, 10, 10},
     {ok, {RestartStrategy, Children}}.

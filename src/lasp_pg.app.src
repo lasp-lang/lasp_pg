@@ -3,16 +3,9 @@
   {description, "Process groups for Lasp"},
   {vsn, "0.0.1"},
   {registered, []},
-  {included_applications,[lasp]},
   {applications, [
                   kernel,
-                  stdlib,
-                  crypto,
-                  lager,
-                  types,
-                  time_compat,
-                  rand_compat,
-                  webmachine
+                  stdlib
                  ]},
   {mod, {lasp_pg_app, []}},
   {modules, []}
