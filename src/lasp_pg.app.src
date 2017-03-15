@@ -5,8 +5,12 @@
   {registered, []},
   {applications, [
                   kernel,
-                  stdlib
+                  stdlib,
+                  lasp
                  ]},
   {mod, {lasp_pg_app, []}},
-  {modules, []}
+  {modules, []},
+  {maintainers,["Christopher S. Meiklejohn"]},
+  {links,[{"Github","https://github.com/lasp-lang/lasp_pg"}]},
+  {licenses,["Apache 2"]}
  ]}.
