@@ -157,7 +157,7 @@ default_manager_test(Config) ->
 
                                 %% Verify we have enough connections.
                                 dict:fold(fun(_N, Active, Acc) ->
-                                    Filtered = lists:filter(fun({_, C, _}) -> 
+                                    Filtered = lists:filter(fun({_, C, _}) ->
                                         case C of
                                             Channel ->
                                                 true;
@@ -208,7 +208,7 @@ default_manager_test(Config) ->
     Group = group,
 
     %% Spawn process 1 and join to group.
-    Pid1 = spawn(fun() -> 
+    Pid1 = spawn(fun() ->
         receive
             exit ->
                 ok
@@ -223,7 +223,7 @@ default_manager_test(Config) ->
     ?assertMatch([Pid1], Members1),
 
     %% Spawn process 2 and join to group.
-    Pid2 = spawn(fun() -> 
+    Pid2 = spawn(fun() ->
         receive
             exit ->
                 ok
@@ -235,11 +235,12 @@ default_manager_test(Config) ->
     timer:sleep(5000),
 
     %% Verify join propagates back to node 1.
-    {ok, EncodedMembers2} = rpc:call(Node1, lasp_pg, members, [Group]),
-    Members2 = sets:to_list(EncodedMembers2),
-    ct:pal("Members on node ~p after join is ~p", [Node1, Members2]),
-    ?assertMatch([Pid1, Pid2], Members2),
-
+    wait_until(fun() ->
+                       {ok, EncodedMembers2} = rpc:call(Node1, lasp_pg, members, [Group]),
+                       Members2 = sets:to_list(EncodedMembers2),
+                       ct:pal("Members on node ~p after join is ~p", [Node1, Members2]),
+                       [Pid1, Pid2] =:= Members2
+               end, 60 * 2, 500),
     %% Stop nodes.
     stop(Nodes),
 
@@ -254,7 +255,7 @@ start(_Case, Config, Options) ->
     %% Launch distribution for the test runner.
     ct:pal("Launching Erlang distribution..."),
 
-    {ok, Hostname} = inet:gethostname(), 
+    {ok, Hostname} = inet:gethostname(),
     os:cmd(os:find_executable("epmd") ++ " -daemon"),
     case net_kernel:start([list_to_atom("runner@" ++ Hostname), shortnames]) of
         {ok, _} ->
@@ -534,7 +535,7 @@ connect(G, N1, N2) ->
     ok.
 
 %% @private
-node_list(0, _Name, _Config) -> 
+node_list(0, _Name, _Config) ->
     [];
 node_list(N, Name, Config) ->
     [ list_to_atom(string:join([Name,
@@ -549,7 +550,7 @@ make_certs(Config) ->
     PrivDir = ?config(priv_dir, Config),
     ct:pal("Generating TLS certificates into ~s", [PrivDir]),
     MakeCertsFile = filename:join(DataDir, "make_certs.erl"),
-    {ok, make_certs, ModBin} = compile:file(MakeCertsFile, 
+    {ok, make_certs, ModBin} = compile:file(MakeCertsFile,
         [binary, debug_info, report_errors, report_warnings]),
     {module, make_certs} = code:load_binary(make_certs, MakeCertsFile, ModBin),
 
@@ -614,7 +615,7 @@ wait_until(Fun, Retry, Delay) when Retry > 0 ->
     end.
 
 %% @private
-%% 
+%%
 %% Kill a random node and then return a list of nodes that still have the
 %% killed node in their membership
 %%
