@@ -485,7 +485,7 @@ cluster({_, Node}, {_, OtherNode}, Config) ->
                       undefined ->
                           [];
                       C ->
-                          
+                         C 
                   end,
     JoinMethod = case ?config(sync_join, Config) of
                   undefined ->
