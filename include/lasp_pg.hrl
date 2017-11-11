@@ -1,1 +1,11 @@
 -define(SET, awset).
+-define(APP, lasp_pg).
+-define(PEER_IP, {127, 0, 0, 1}).
+-define(PEER_PORT, 9000).
+-define(PEER_SERVICE_SERVER, partisan_peer_service_server).
+-define(FANOUT, 5).
+-define(CACHE, partisan_connection_cache).
+-define(PARALLELISM, 1).
+-define(DEFAULT_CHANNEL, undefined).
+-define(CHANNELS, [?DEFAULT_CHANNEL]).
+-define(CONNECTION_JITTER, 1000).
