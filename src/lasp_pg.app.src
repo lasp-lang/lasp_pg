@@ -5,7 +5,9 @@
   {registered, []},
   {applications, [
                   kernel,
-                  stdlib
+                  stdlib,
+                  lasp,
+                  partisan
                  ]},
   {mod, {lasp_pg_app, []}},
   {modules, []}
