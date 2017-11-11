@@ -96,7 +96,7 @@ default_manager_test(Config) ->
                    {clients, Clients}]),
 
     %% Pause for clustering.
-    timer:sleep(1000),
+    timer:sleep(5000),
 
     %% Verify membership.
     %%
@@ -234,7 +234,7 @@ default_manager_test(Config) ->
     %% Wait anti-entropy interval.
     timer:sleep(5000),
 
-    %% Verify join propagates back to node 1.
+    %% Verify join propagates back to node 1    .
     {ok, EncodedMembers2} = rpc:call(Node1, lasp_pg, members, [Group]),
     Members2 = sets:to_list(EncodedMembers2),
     ct:pal("Members on node ~p after join is ~p", [Node1, Members2]),
@@ -471,10 +471,10 @@ cluster({Name, _Node} = Myself, Nodes, Options, Config) when is_list(Nodes) ->
                  end,
     lists:map(fun(OtherNode) -> cluster(Myself, OtherNode, Config) end, OtherNodes).
 cluster({_, Node}, {_, OtherNode}, Config) ->
-    PeerPort = rpc:call(OtherNode,
+    ListenAddrs = rpc:call(OtherNode,
                         partisan_config,
                         get,
-                        [peer_port, ?PEER_PORT]),
+                        [listen_addrs]),
     Parallelism = case ?config(parallelism, Config) of
                       undefined ->
                           1;
@@ -485,7 +485,7 @@ cluster({_, Node}, {_, OtherNode}, Config) ->
                       undefined ->
                           [];
                       C ->
-                          C
+                         C 
                   end,
     JoinMethod = case ?config(sync_join, Config) of
                   undefined ->
@@ -493,12 +493,12 @@ cluster({_, Node}, {_, OtherNode}, Config) ->
                   true ->
                       sync_join
                   end,
-    ct:pal("Joining node: ~p to ~p at port ~p", [Node, OtherNode, PeerPort]),
+    ct:pal("Joining node: ~p to ~p at port ~p", [Node, OtherNode, ListenAddrs]),
     ok = rpc:call(Node,
                   partisan_peer_service,
                   JoinMethod,
                   [#{name => OtherNode,
-                     listen_addrs => [#{ip => {127, 0, 0, 1}, port => PeerPort}],
+                     listen_addrs => ListenAddrs,
                      channels => Channels,
                      parallelism => Parallelism}]).
 
