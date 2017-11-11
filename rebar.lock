@@ -15,7 +15,7 @@
  {<<"lager">>,{pkg,<<"lager">>,<<"3.2.1">>},1},
  {<<"lasp">>,
   {git,"https://github.com/lasp-lang/lasp",
-       {ref,"832e98e70df22677f17c730d29b9de193370705e"}},
+       {ref,"3284210792db769ac1484d8e7b52b8a220467256"}},
   0},
  {<<"lasp_support">>,
   {git,"https://github.com/lasp-lang/lasp_support",
