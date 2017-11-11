@@ -96,7 +96,7 @@ default_manager_test(Config) ->
                    {clients, Clients}]),
 
     %% Pause for clustering.
-    timer:sleep(2000),
+    timer:sleep(5000),
 
     %% Verify membership.
     %%
