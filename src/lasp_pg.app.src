@@ -1,14 +1,11 @@
-{application, lasp_pg,
- [
-  {description, "Process groups for Lasp"},
-  {vsn, "0.0.1"},
-  {registered, []},
-  {applications, [
-                  kernel,
-                  stdlib,
-                  lasp,
-                  partisan
-                 ]},
-  {mod, {lasp_pg_app, []}},
-  {modules, []}
- ]}.
+{application,lasp_pg,
+             [{description,"Process groups for Lasp"},
+              {vsn,"0.1.0"},
+              {registered,[]},
+              {applications,[kernel,stdlib,lasp,partisan]},
+              {mod,{lasp_pg_app,[]}},
+              {modules,[]},
+              {maintainers,["Christopher S. Meiklejohn", "Tristan Sloughter"]},
+              {links,[{"Github","https://github.com/lasp-lang/lasp_pg"}]},
+              {licenses,["Apache 2"]}
+             ]}.
