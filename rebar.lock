@@ -4,7 +4,7 @@
  {<<"gen_fsm_compat">>,{pkg,<<"gen_fsm_compat">>,<<"0.3.0">>},1},
  {<<"lasp">>,
   {git,"https://github.com/Inkwell-Data/lasp.git",
-       {ref,"aed94f3ecf4b39763e48c8387549b8e29cc96cad"}},
+       {ref,"c8b37157a3b8a9f22e9a2c4145302d1c51b3be3c"}},
   0},
  {<<"lasp_support">>,{pkg,<<"lasp_support">>,<<"0.1.0">>},1},
  {<<"partisan">>,
@@ -16,7 +16,10 @@
        {ref,"573639da23a9d571acf7633c749bc595d6eddde0"}},
   1},
  {<<"quickrand">>,{pkg,<<"quickrand">>,<<"1.7.5">>},3},
- {<<"types">>,{pkg,<<"types">>,<<"0.1.8">>},1},
+ {<<"types">>,
+  {git,"https://github.com/Inkwell-Data/types.git",
+       {ref,"8cfaeb1bd7a0983db62d1ed3129e7cab91239ff6"}},
+  1},
  {<<"uuid">>,{pkg,<<"uuid_erl">>,<<"1.7.5">>},2}]}.
 [
 {pkg_hash,[
@@ -25,7 +28,6 @@
  {<<"gen_fsm_compat">>, <<"5903549F67D595F58A7101154CBE0FDD46955FBFBE40813F1E53C23A970FF5F4">>},
  {<<"lasp_support">>, <<"A6D665138BD8C10555FE7A4A2A81A8A47079EAE5FFC368D411DE660EB7A66F04">>},
  {<<"quickrand">>, <<"E3086A153EB13A057FC19192D05E2D4C6BB2BDBB55746A699BEAE9847AC17CA8">>},
- {<<"types">>, <<"5782B67231E8C174FE2835395E71E669FE0121076779D2A09F1C0D58EE0E2F13">>},
  {<<"uuid">>, <<"3862FF9A21C42566DFD0376B97512FA202922897129E09A05E2AFA0D9CAFD97A">>}]},
 {pkg_hash_ext,[
  {<<"acceptor_pool">>, <<"0CBCD83FDC8B9AD2EEE2067EF8B91A14858A5883CB7CD800E6FCD5803E158788">>},
@@ -33,6 +35,5 @@
  {<<"gen_fsm_compat">>, <<"7153D11BAD328933D4B24E663D8CEC52874E14176C7FB392FA1FF768B17460D9">>},
  {<<"lasp_support">>, <<"D57A85BA77607BB097CE4B9DD233E29C98C4824468D1A7BE06C9C6C15D8618F8">>},
  {<<"quickrand">>, <<"6A1DA81FE098C0DFCFB55C5E35C20BE430128E88BBFA03D18FCF9E0EE8E342D7">>},
- {<<"types">>, <<"04285239F4954C5EDE56F78ED7778EDE24E3F2E997F7B16402A167AF0CC2658A">>},
  {<<"uuid">>, <<"6529F1C5D8C6B796374318FD1966659FAA6EE832C914E93B1DEB1D4701694AA9">>}]}
 ].
