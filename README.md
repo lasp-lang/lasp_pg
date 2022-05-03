@@ -55,6 +55,26 @@ partisan_config:set(partisan_peer_service_manager, partisan_hyparview_peer_servi
 
 Available options are: ```partisan_client_server_peer_service_manager```, ```partisan_default_peer_service_manager``` or ```partisan_hyparview_peer_service_manager```.
 
+### Configuration
+
+In necessary configure the `partisan` with `pid_encoding` to `false` for working
+with the `pid()`.
+
+#### erlang conf:
+
+```erlang
+{partisan, [                                                                                                                                                                                                                      
+  {pid_encoding, false},
+]},
+```
+
+#### elixir conf:
+
+```elixir
+config :partisan, 
+  pid_encoding: false
+```
+
 ## Replication
 
 Lasp PG uses the underlying Lasp KV store, which only has in-memory
